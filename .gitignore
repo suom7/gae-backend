@@ -1,0 +1,27 @@
+target
+velocity.log
+.classpath
+.settings
+.idea
+*.iml
+nb.classpath.properties
+.DS_Store
+/bin
+/nbproject
+.project
+.tern-project
+
+# Gradle
+/build/
+/.gradle/
+/node_modules/
+
+# Emacs
+*~
+\#*\#
+
+#bower
+src/main/webapp/bower_components/
+
+#vscode
+/.vscode/

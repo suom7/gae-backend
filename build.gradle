@@ -1,0 +1,41 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath("com.google.cloud.tools:appengine-gradle-plugin:+")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'war'
+apply plugin: 'com.google.cloud.tools.appengine'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+configurations {
+    compile.exclude module: "spring-boot-starter-tomcat"
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-web:1.5.3.RELEASE') {
+        exclude module: 'log4j-over-slf4j:org.slf4j'
+        exclude module: 'spring-boot-starter-tomcat'
+    }
+    
+	compile('io.springfox:springfox-swagger2:2.7.0')
+	compile('io.springfox:springfox-swagger-ui:2.7.0')
+	compileOnly('org.projectlombok:lombok')
+    compileOnly('javax.servlet:javax.servlet-api:3.1.0')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
